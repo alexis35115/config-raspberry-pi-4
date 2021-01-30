@@ -2,12 +2,11 @@
 
 Voici la configuration nécessaire pour son Raspberry Pi dans le cadre du cours 420-253-MT Objets connectés
 
--- > parler des configurations pour le raspberry pi de base?
+## Configuration de base
 
+À venir.
 
 ## Logiciels
-
-mentionner le 32 versus le 64?
 
 ### Git
 
@@ -39,8 +38,6 @@ git config --list
 
 ### Visual Studio Code
 
-https://code.visualstudio.com/download
-
 ```sh
 # Installer curl
 sudo apt install curl -y
@@ -61,9 +58,6 @@ sudo apt-get install apt-transport-https
 sudo apt-get update
 sudo apt-get install code
 ```
-
-
-elle pour le formattage?
 
 #### Extensions
 
@@ -107,9 +101,7 @@ mv ~/Downloads/ttf/CascadiaCodePL.ttf  ~/.local/share/fonts
 fc-cache -f -v
 ```
 
-valider l'autoformatting et la FONT POUR LE SETTINGS
-
-linting https://code.visualstudio.com/docs/python/linting#_enable-linters
+Configuration à mettre dans le fichier settings.json :
 
 ```json
 {
@@ -153,12 +145,6 @@ Vérifier l'installation :
 ```sh
 python3 --version
 ```
-
-### autres?
-
-
-Installation de Python - déjà là?
-
 
 _Dans le cadre du cours 420-253-MT Objets connectés_
 
