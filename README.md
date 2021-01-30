@@ -27,9 +27,8 @@ git --version
 Configuration initiale :
 
 ```sh
-# Mettre vos informations
 git config --global user.name "john doe"
-git config --global user.email "johndoe@mail.com
+git config --global user.email "johndoe@mail.com"
 ```
 
 Valider la configuration initiale :
@@ -43,10 +42,28 @@ git config --list
 https://code.visualstudio.com/download
 
 ```sh
-curl -L https://raw.githubusercontent.com/headmelted/codebuilds/master/docs/installers/apt.sh | sudo bash
+# Installer curl
+sudo apt install curl -y
+
+# Installer le repository et la clé manuellement
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+
+sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
+
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+
+sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
+
+sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+
+# Mise à jour de la cache du package et installation
+sudo apt-get install apt-transport-https
+sudo apt-get update
+sudo apt-get install code
 ```
 
-gist des settings? + elle pour le formattage?
+
+elle pour le formattage?
 
 #### Extensions
 
@@ -57,14 +74,40 @@ code --install-extension donjayamanne.githistory
 code --install-extension eamodio.gitlens
 code --install-extension EditorConfig.EditorConfig
 code --install-extension ms-python.python
-code --install-extension ms-toolsai.jupyter
 code --install-extension ms-vscode.vs-keybindings
 code --install-extension vscode-icons-team.vscode-icons
 code --install-extension yzane.markdown-pdf
 code --install-extension PhonicCanine.micro-bit
 ```
 
-valider l'autoformatting
+Ajouter la police Cascadia Code PL :
+
+```sh
+# Documentations :
+# - https://linuxconfig.org/how-to-install-fonts-on-ubuntu-18-04-bionic-beaver-linux
+# - https://linoxide.com/linux-how-to/install-fonts-on-ubuntu/
+
+# Prérequis
+sudo apt install unzip
+sudo apt-get install fontconfig -y
+
+# Téléchargement du fichier ZIP qui contient le TTF dans le répertoire "Downloads"
+curl -L -O https://github.com/microsoft/cascadia-code/releases/download/v2009.22/CascadiaCode-2009.22.zip --output ~/Downloads/CascadiaCode.zip
+
+# Dézipper le ZIP
+unzip -q ~/Downloads/CascadiaCode.zip
+
+# Créer le répertoire pour contenir les polices si celui-ci n'existe pas
+mkdir -p ~/.local/share/fonts
+
+# Déplacer le fichier ttf dans le répertoire des polices
+mv ~/Downloads/CascadiaCode/ttf/CascadiaPL.ttf  ~/.local/share/fonts
+
+# Vider et regénérer la cache de la police
+fc-cache -f -v
+```
+
+valider l'autoformatting et la FONT POUR LE SETTINGS
 
 linting https://code.visualstudio.com/docs/python/linting#_enable-linters
 
