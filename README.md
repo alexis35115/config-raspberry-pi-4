@@ -92,7 +92,7 @@ sudo apt install unzip
 sudo apt-get install fontconfig -y
 
 # Téléchargement du fichier ZIP qui contient le TTF dans le répertoire "Downloads"
-wget -c https://github.com/microsoft/cascadia-code/releases/download/v2009.22/CascadiaCode-2009.22.zip --output ~/Downloads/CascadiaCode.zip
+wget -c https://github.com/microsoft/cascadia-code/releases/download/v2009.22/CascadiaCode-2009.22.zip -O ~/Downloads/CascadiaCode.zip
 
 # Dézipper le ZIP
 unzip -q ~/Downloads/CascadiaCode.zip
@@ -101,7 +101,7 @@ unzip -q ~/Downloads/CascadiaCode.zip
 mkdir -p ~/.local/share/fonts
 
 # Déplacer le fichier ttf dans le répertoire des polices
-mv ~/Downloads/CascadiaCode/ttf/CascadiaPL.ttf  ~/.local/share/fonts
+mv ~/Downloads/ttf/CascadiaCodePL.ttf  ~/.local/share/fonts
 
 # Vider et regénérer la cache de la police
 fc-cache -f -v
