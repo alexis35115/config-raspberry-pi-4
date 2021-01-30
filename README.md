@@ -92,7 +92,7 @@ sudo apt install unzip
 sudo apt-get install fontconfig -y
 
 # Téléchargement du fichier ZIP qui contient le TTF dans le répertoire "Downloads"
-curl -L -O https://github.com/microsoft/cascadia-code/releases/download/v2009.22/CascadiaCode-2009.22.zip --output ~/Downloads/CascadiaCode.zip
+wget -c https://github.com/microsoft/cascadia-code/releases/download/v2009.22/CascadiaCode-2009.22.zip --output ~/Downloads/CascadiaCode.zip
 
 # Dézipper le ZIP
 unzip -q ~/Downloads/CascadiaCode.zip
