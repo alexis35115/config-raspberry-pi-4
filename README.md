@@ -71,6 +71,7 @@ code --install-extension ms-python.python
 code --install-extension ms-vscode.vs-keybindings
 code --install-extension vscode-icons-team.vscode-icons
 code --install-extension yzane.markdown-pdf
+code --install-extension PhonicCanine.micro-bit
 ```
 
 Ajouter la police Cascadia Code PL :
