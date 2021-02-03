@@ -146,6 +146,15 @@ Vérifier l'installation :
 python3 --version
 ```
 
+### Éditeur Mu
+
+Installation :
+
+```sh
+sudo apt update
+sudo apt-get install mu-editor
+```
+
 _Dans le cadre du cours 420-253-MT Objets connectés_
 
 Tous droits réservés 2021 © Alexis Garon-Michaud
