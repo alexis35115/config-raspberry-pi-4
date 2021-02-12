@@ -1,6 +1,8 @@
 # Configuration de son Raspberry Pi
 
-Voici la configuration nécessaire pour son Raspberry Pi dans le cadre du cours 420-253-MT Objets connectés
+Voici la configuration nécessaire pour son Raspberry Pi 4 dans le cadre du cours 420-253-MT Objets connectés
+
+> Le système d'exploitation utilisé est Raspberry Pi OS 32-bit avec bureau. N'hésitez pas à utiliser [Raspberry Pi Imager](https://www.raspberrypi.org/software/) pour formater votre carte micro SD.
 
 ## Configuration de base
 
@@ -25,6 +27,8 @@ git --version
 
 Configuration initiale :
 
+> N'oubliez pas de changer les valeurs par défaut.
+
 ```sh
 git config --global user.name "john doe"
 git config --global user.email "johndoe@mail.com"
@@ -38,25 +42,11 @@ git config --list
 
 ### Visual Studio Code
 
+Depuis 2021, il est possible d'[installer Visual Studio Code](https://www.raspberrypi.org/blog/visual-studio-code-comes-to-raspberry-pi/) directement avec `apt`.
+
 ```sh
-# Installer curl
-sudo apt install curl -y
-
-# Installer le repository et la clé manuellement
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-
-sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
-
-wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-
-sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
-
-sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
-
-# Mise à jour de la cache du package et installation
-sudo apt-get install apt-transport-https
-sudo apt-get update
-sudo apt-get install code
+sudo apt update 
+sudo apt install code -y
 ```
 
 #### Extensions
@@ -97,9 +87,11 @@ mkdir -p ~/.local/share/fonts
 # Déplacer le fichier ttf dans le répertoire des polices
 mv ~/Downloads/ttf/CascadiaCodePL.ttf  ~/.local/share/fonts
 
-# Vider et regénérer la cache de la police
+# Vider et régénérer la cache de la police
 fc-cache -f -v
 ```
+
+> Dans le cas où vous avez un problème lors de la commande "mkdir -p ~/.local/share/fonts", exécutez la commande "unzip -q ~/Downloads/CascadiaCode.zip" de nouveau.
 
 Configuration à mettre dans le fichier settings.json :
 
