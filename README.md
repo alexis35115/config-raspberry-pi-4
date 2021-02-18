@@ -42,11 +42,24 @@ git config --list
 
 ### Visual Studio Code
 
-Depuis 2021, il est possible d'[installer Visual Studio Code](https://www.raspberrypi.org/blog/visual-studio-code-comes-to-raspberry-pi/) directement avec `apt`.
+Installer Visual Studio Code :
 
 ```sh
-sudo apt update 
-sudo apt install code -y
+# Installer curl
+sudo apt install curl -y
+
+# Installer le repository et la clé manuellement
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg	
+sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
+
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
+sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+
+# Mise à jour de la cache du package et installation
+sudo apt-get install apt-transport-https
+sudo apt-get update
+sudo apt-get install code
 ```
 
 #### Extensions
